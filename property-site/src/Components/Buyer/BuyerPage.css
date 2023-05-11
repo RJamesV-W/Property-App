@@ -1,0 +1,68 @@
+  .buyer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .buyer-table thead {
+    background-color: #f2f2f2;
+  }
+  
+  .buyer-table th,
+  .buyer-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .buyer-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .buyer-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .buyer-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  
+  .form-container {
+    margin-top: 20px;
+  }
+  
+  .form-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    width: 300px;
+  }
+  
+  .modal-content button {
+    margin-right: 10px;
+  }
+
+  .validation-message {
+    color: red;
+    font-size: 12px;
+    margin: 2px 0;
+  }
