@@ -7,7 +7,7 @@ import java.util.List;
 
 
 @Entity
-public class Sellers {
+public class Seller {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,15 +32,15 @@ public class Sellers {
     private int phone;
 
     // One seller can have many properties
-    @OneToMany(mappedBy = "sellers", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "seller", fetch = FetchType.EAGER)
     @JsonIgnore
-    private List<Properties> propertiesList;
+    private List<Property> propertyList;
 
     public long getSeller_id() {
         return seller_id;
     }
 
-    public Sellers(long id, String firstName, String lastName, String email, String address, String postcode, int phone, List<Properties> propertiesList) {
+    public Seller(long id, String firstName, String lastName, String email, String address, String postcode, int phone, List<Property> propertyList) {
         this.seller_id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -48,10 +48,10 @@ public class Sellers {
         this.address = address;
         this.postcode = postcode;
         this.phone = phone;
-        this.propertiesList = propertiesList;
+        this.propertyList = propertyList;
     }
 
-    public Sellers(long id, String firstName, String lastName, String email, String address, String postcode, int phone) {
+    public Seller(long id, String firstName, String lastName, String email, String address, String postcode, int phone) {
         this.seller_id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -95,17 +95,17 @@ public class Sellers {
     }
 
 
-    public List<Properties> getPropertiesList() {
-        return propertiesList;
+    public List<Property> getPropertiesList() {
+        return propertyList;
     }
 
-    public void setPropertiesList(List<Properties> propertiesList) {
-        this.propertiesList = propertiesList;
+    public void setPropertiesList(List<Property> propertyList) {
+        this.propertyList = propertyList;
     }
 
-    public Sellers() {
+    public Seller() {
     }
-    public Sellers(long id) {
+    public Seller(long id) {
         this.seller_id = id;
     }
 
@@ -131,7 +131,7 @@ public class Sellers {
 
     @Override
     public String toString() {
-        return "Sellers{" +
+        return "Seller{" +
                 "seller_id=" + seller_id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -139,7 +139,7 @@ public class Sellers {
                 ", address='" + address + '\'' +
                 ", postcode='" + postcode + '\'' +
                 ", phone=" + phone +
-                ", propertiesList=" + propertiesList +
+                ", propertiesList=" + propertyList +
                 '}';
     }
 }

@@ -1,6 +1,6 @@
 package com.bae.property_api.controller;
 
-import com.bae.property_api.entities.Sellers;
+import com.bae.property_api.entities.Seller;
 import com.bae.property_api.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ public class SellerController {
      * @return List of Sellers
      */
     @GetMapping("/read")
-    public List<Sellers> read() {
+    public List<Seller> read() {
         return service.getAll();
     }
 
@@ -32,7 +32,7 @@ public class SellerController {
      * @return Seller
      */
     @GetMapping("/read/{id}")
-    public Sellers readOne(@PathVariable long id) {
+    public Seller readOne(@PathVariable long id) {
         return service.getSeller(id);
     }
 
@@ -43,7 +43,7 @@ public class SellerController {
      * @return The created Seller
      */
     @PostMapping("/add")
-    public Sellers add(@RequestBody Sellers newSeller) {
+    public Seller add(@RequestBody Seller newSeller) {
         return service.createSeller(newSeller);
     }
 
@@ -61,11 +61,11 @@ public class SellerController {
      * Update a Seller by ID
      *
      * @param id      The ID of the Seller to update
-     * @param sellers The Seller object with updated information
+     * @param seller The Seller object with updated information
      * @return The updated Seller
      */
     @PutMapping("/update/{id}")
-    public Sellers updatePerson(@PathVariable long id, @RequestBody Sellers sellers) {
-        return this.service.updateSeller(id, sellers);
+    public Seller updatePerson(@PathVariable long id, @RequestBody Seller seller) {
+        return this.service.updateSeller(id, seller);
     }
 }

@@ -1,6 +1,6 @@
 package com.bae.property_api.controller;
 
-import com.bae.property_api.entities.Properties;
+import com.bae.property_api.entities.Property;
 import com.bae.property_api.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +30,7 @@ public class PropertyController {
      * @return List of Properties
      */
     @GetMapping("/read")
-    public List<Properties> read() {
+    public List<Property> read() {
         return service.getAll();
     }
 
@@ -41,7 +41,7 @@ public class PropertyController {
      * @return Property
      */
     @GetMapping("/read/{id}")
-    public Properties readOne(@PathVariable long id) {
+    public Property readOne(@PathVariable long id) {
         return service.getProperty(id);
     }
 
@@ -52,7 +52,7 @@ public class PropertyController {
      * @return The created Property
      */
     @PostMapping("/add")
-    public Properties add(@RequestBody Properties newProperty) {
+    public Property add(@RequestBody Property newProperty) {
         return this.service.createProperty(newProperty);
     }
 
@@ -70,11 +70,11 @@ public class PropertyController {
      * Update a Property by ID
      *
      * @param id         The ID of the Property to update
-     * @param properties The Property object with updated information
+     * @param property The Property object with updated information
      * @return The updated Property
      */
     @PutMapping("/update/{id}")
-    public Properties updateProperty(@PathVariable long id, @RequestBody Properties properties) {
-        return this.service.updateProperty(id, properties);
+    public Property updateProperty(@PathVariable long id, @RequestBody Property property) {
+        return this.service.updateProperty(id, property);
     }
 }

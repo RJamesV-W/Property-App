@@ -22,19 +22,20 @@ function SellerPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${jsonURL}/seller`)
+    fetch(`${jsonURL}/seller/read`)
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         setSellers(data);
-        return Promise.all(
+        /*return Promise.all(
           data.map(seller =>
             fetch(`${jsonURL}/property?sellerId=${seller.id}`)
               .then(response => response.json())
               .then(properties => ({ sellerId: seller.id, count: properties.length }))
           )
-        );
+        );*/
       })
-      .then(counts => setPropertyCounts(counts))
+      //.then(counts => setPropertyCounts(counts))
       .catch(error => console.error(error));
   }, []);
 
@@ -121,10 +122,10 @@ function SellerPage() {
         </thead>
         <tbody>
           {sellers.map(seller => (
-            <tr key={seller.id}>
-              <td>{seller.id}</td>
+            <tr key={seller.seller_id}>
+              <td>{seller.seller_id}</td>
               <td>{seller.firstName}</td>
-              <td>{seller.surname}</td>
+              <td>{seller.lastName}</td>
               <td>{seller.address}</td>
               <td>{seller.postcode}</td>
               <td>{seller.phone}</td>

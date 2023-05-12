@@ -3,7 +3,7 @@ package com.bae.property_api.entities;
 import jakarta.persistence.*;
 
 @Entity
-public class Properties {
+public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long property_id;
@@ -19,10 +19,10 @@ public class Properties {
 
     @JoinColumn(name = "seller_id_fk")
     @ManyToOne
-    private Sellers sellers;
+    private Seller seller;
 
     // Default constructor
-    public Properties() {
+    public Property() {
     }
 
     /**
@@ -37,9 +37,9 @@ public class Properties {
      * @param bedrooms    Number of bedrooms
      * @param bathrooms   Number of bathrooms
      * @param garden      Garden availability
-     * @param sellers     Sellers object
+     * @param seller      Seller object
      */
-    public Properties(long property_id, String address, String postcode, String price, String status, String type, String bedrooms, String bathrooms, String garden, Sellers sellers) {
+    public Property(long property_id, String address, String postcode, String price, String status, String type, String bedrooms, String bathrooms, String garden, Seller seller) {
         this.property_id = property_id;
         this.address = address;
         this.postcode = postcode;
@@ -49,7 +49,7 @@ public class Properties {
         this.bedrooms = bedrooms;
         this.bathrooms = bathrooms;
         this.garden = garden;
-        this.sellers = sellers;
+        this.seller = seller;
     }
 
     public long getProperty_id() {
@@ -124,12 +124,12 @@ public class Properties {
         this.garden = garden;
     }
 
-    public Sellers getSellers() {
-        return sellers;
+    public Seller getSeller() {
+        return seller;
     }
 
-    public void setSellers(Sellers sellers) {
-        this.sellers = sellers;
+    public void setSeller(Seller seller) {
+        this.seller = seller;
     }
 
     @Override
@@ -144,7 +144,7 @@ public class Properties {
                 ", bedrooms='" + bedrooms + '\'' +
                 ", bathrooms='" + bathrooms + '\'' +
                 ", garden='" + garden + '\'' +
-                ", sellers=" + sellers +
+                ", seller=" + seller +
                 '}';
     }
 }

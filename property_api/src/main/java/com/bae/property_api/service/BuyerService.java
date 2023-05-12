@@ -1,6 +1,6 @@
 package com.bae.property_api.service;
 
-import com.bae.property_api.entities.Buyers;
+import com.bae.property_api.entities.Buyer;
 import com.bae.property_api.repo.BuyerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,40 +20,40 @@ public class BuyerService {
 
     }
 
-    public List<Buyers> getAll() {
+    public List<Buyer> getAll() {
         return this.repo.findAll();
     }
 
 
-    public Buyers getBuyer(Long id) {
+    public Buyer getBuyer(Long id) {
 
         return this.repo.findById(id).get();
 
     }
 
 
-    public Buyers createBuyer (Buyers buyer){
+    public Buyer createBuyer (Buyer buyer){
 
         return this.repo.save(buyer);
 
     }
 
-    public Buyers deleteBuyer (long id){
-        Buyers removed = this.getBuyer(id);
+    public Buyer deleteBuyer (long id){
+        Buyer removed = this.getBuyer(id);
         this.repo.deleteById(id);
         return removed;
 
     }
 
-    public Buyers updateBuyer (long id,  Buyers buyers)    {
+    public Buyer updateBuyer (long id, Buyer buyer)    {
 
-        Buyers toUpdate = this.getBuyer(id);
-        if (buyers.getFirstName()!=null) toUpdate.setFirstName(buyers.getFirstName());
-        if (buyers.getLastName()!=null) toUpdate.setLastName(buyers.getLastName());
-        if (buyers.getEmail()!=null) toUpdate.setEmail(buyers.getEmail());
-        if (buyers.getAddress()!=null) toUpdate.setAddress(buyers.getAddress());
-        if (buyers.getPhone()!=null) toUpdate.setPhone(buyers.getPhone());
-        if (buyers.getPostcode()!=null) toUpdate.setPostcode(buyers.getPostcode());
+        Buyer toUpdate = this.getBuyer(id);
+        if (buyer.getFirstName()!=null) toUpdate.setFirstName(buyer.getFirstName());
+        if (buyer.getLastName()!=null) toUpdate.setLastName(buyer.getLastName());
+        if (buyer.getEmail()!=null) toUpdate.setEmail(buyer.getEmail());
+        if (buyer.getAddress()!=null) toUpdate.setAddress(buyer.getAddress());
+        if (buyer.getPhone()!=null) toUpdate.setPhone(buyer.getPhone());
+        if (buyer.getPostcode()!=null) toUpdate.setPostcode(buyer.getPostcode());
 
         return this.repo.save(toUpdate);
 

@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
-public class Buyers {
+public class Buyer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +40,7 @@ public class Buyers {
      * @param postcode   Postcode of the buyer's address
      * @param phone      Phone number of the buyer
      */
-    public Buyers(long buyer_id, String firstName, String lastName, String email, String address, String postcode, String phone) {
+    public Buyer(long buyer_id, String firstName, String lastName, String email, String address, String postcode, String phone) {
         this.buyer_id = buyer_id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -107,12 +107,12 @@ public class Buyers {
     }
 
     // Default constructor
-    public Buyers() {
+    public Buyer() {
     }
 
     @Override
     public String toString() {
-        return "Buyers{" +
+        return "Buyer{" +
                 "id=" + buyer_id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

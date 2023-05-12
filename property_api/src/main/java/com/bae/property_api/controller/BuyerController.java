@@ -1,6 +1,6 @@
 package com.bae.property_api.controller;
 
-import com.bae.property_api.entities.Buyers;
+import com.bae.property_api.entities.Buyer;
 import com.bae.property_api.service.BuyerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class BuyerController {
      * @return List of Buyers
      */
     @GetMapping("/read")
-    public List<Buyers> read() {
+    public List<Buyer> read() {
         return service.getAll();
     }
 
@@ -33,7 +33,7 @@ public class BuyerController {
      * @return Buyer
      */
     @GetMapping("/read/{id}")
-    public Buyers readOne(@PathVariable long id) {
+    public Buyer readOne(@PathVariable long id) {
         return service.getBuyer(id);
     }
 
@@ -44,7 +44,7 @@ public class BuyerController {
      * @return The created Buyer
      */
     @PostMapping("/add")
-    public Buyers add(@Valid @RequestBody Buyers newBuyer) {
+    public Buyer add(@Valid @RequestBody Buyer newBuyer) {
         return service.createBuyer(newBuyer);
     }
 
@@ -66,7 +66,7 @@ public class BuyerController {
      * @return The updated Buyer
      */
     @PutMapping("/update/{id}")
-    public Buyers updatePerson(@PathVariable long id, @RequestBody Buyers buyer) {
+    public Buyer updatePerson(@PathVariable long id, @RequestBody Buyer buyer) {
         return this.service.updateBuyer(id, buyer);
     }
 }
