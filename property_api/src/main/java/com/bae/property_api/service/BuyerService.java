@@ -49,7 +49,7 @@ public class BuyerService {
 
         Buyer toUpdate = this.getBuyer(id);
         if (buyer.getFirstName()!=null) toUpdate.setFirstName(buyer.getFirstName());
-        if (buyer.getLastName()!=null) toUpdate.setLastName(buyer.getLastName());
+        if (buyer.getSurname()!=null) toUpdate.setSurname(buyer.getSurname());
         if (buyer.getEmail()!=null) toUpdate.setEmail(buyer.getEmail());
         if (buyer.getAddress()!=null) toUpdate.setAddress(buyer.getAddress());
         if (buyer.getPhone()!=null) toUpdate.setPhone(buyer.getPhone());

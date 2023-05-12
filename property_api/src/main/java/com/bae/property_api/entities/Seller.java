@@ -17,7 +17,7 @@ public class Seller {
     private String firstName;
 
     @Column(nullable = false)
-    private String lastName;
+    private String Surname;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -29,7 +29,7 @@ public class Seller {
     private String postcode;
 
     @Column(nullable = false)
-    private int phone;
+    private String phone;
 
     // One seller can have many properties
     @OneToMany(mappedBy = "seller", fetch = FetchType.EAGER)
@@ -40,10 +40,10 @@ public class Seller {
         return seller_id;
     }
 
-    public Seller(long id, String firstName, String lastName, String email, String address, String postcode, int phone, List<Property> propertyList) {
+    public Seller(long id, String firstName, String Surname, String email, String address, String postcode, String phone, List<Property> propertyList) {
         this.seller_id = id;
         this.firstName = firstName;
-        this.lastName = lastName;
+        this.Surname = Surname;
         this.email = email;
         this.address = address;
         this.postcode = postcode;
@@ -51,10 +51,10 @@ public class Seller {
         this.propertyList = propertyList;
     }
 
-    public Seller(long id, String firstName, String lastName, String email, String address, String postcode, int phone) {
+    public Seller(long id, String firstName, String Surname, String email, String address, String postcode, String phone) {
         this.seller_id = id;
         this.firstName = firstName;
-        this.lastName = lastName;
+        this.Surname = Surname;
         this.email = email;
         this.address = address;
         this.postcode = postcode;
@@ -86,11 +86,9 @@ public class Seller {
         this.postcode = postcode;
     }
 
-    public int getPhone() {
-        return phone;
-    }
+    public String getPhone() {  return phone; }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -121,12 +119,12 @@ public class Seller {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSurname() {
+        return Surname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSurname(String Surname) {
+        this.Surname = Surname;
     }
 
     @Override
@@ -134,7 +132,7 @@ public class Seller {
         return "Seller{" +
                 "seller_id=" + seller_id +
                 ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", Surname='" + Surname + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 ", postcode='" + postcode + '\'' +

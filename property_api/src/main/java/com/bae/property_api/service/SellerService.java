@@ -47,10 +47,10 @@ public class SellerService {
 
         Seller toUpdate = this.getSeller(id);
         if (seller.getFirstName()!=null) toUpdate.setFirstName(seller.getFirstName());
-        if (seller.getLastName()!=null) toUpdate.setLastName(seller.getLastName());
+        if (seller.getSurname()!=null) toUpdate.setSurname(seller.getSurname());
         if (seller.getEmail()!=null) toUpdate.setEmail(seller.getEmail());
         if (seller.getAddress()!=null) toUpdate.setAddress(seller.getAddress());
-        if (seller.getPhone()!=0) toUpdate.setPhone(seller.getPhone());
+        if (seller.getPhone()!=null) toUpdate.setPhone(seller.getPhone());
         if (seller.getPostcode()!=null) toUpdate.setPostcode(seller.getPostcode());
 
         return this.repo.save(toUpdate);

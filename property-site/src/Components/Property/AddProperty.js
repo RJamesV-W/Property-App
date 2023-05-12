@@ -31,7 +31,7 @@ function AddProperty() {
       status: "FOR SALE",
     };
 
-    fetch(`${jsonURL}/property`, {
+    fetch(`${jsonURL}/property/read`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

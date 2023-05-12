@@ -17,7 +17,7 @@ public class Buyer {
     private long buyer_id;
 
     private String firstName;
-    private String lastName;
+    private String Surname;
 
     @NotNull
     @Email
@@ -34,16 +34,16 @@ public class Buyer {
      *
      * @param buyer_id   The ID of the buyer
      * @param firstName  First name of the buyer
-     * @param lastName   Last name of the buyer
+     * @param Surname   Last name of the buyer
      * @param email      Email of the buyer
      * @param address    Address of the buyer
      * @param postcode   Postcode of the buyer's address
      * @param phone      Phone number of the buyer
      */
-    public Buyer(long buyer_id, String firstName, String lastName, String email, String address, String postcode, String phone) {
+    public Buyer(long buyer_id, String firstName, String Surname, String email, String address, String postcode, String phone) {
         this.buyer_id = buyer_id;
         this.firstName = firstName;
-        this.lastName = lastName;
+        this.Surname = Surname;
         this.email = email;
         this.address = address;
         this.postcode = postcode;
@@ -66,12 +66,12 @@ public class Buyer {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSurname() {
+        return Surname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSurname(String Surname) {
+        this.Surname = Surname;
     }
 
     public String getEmail() {
@@ -115,7 +115,7 @@ public class Buyer {
         return "Buyer{" +
                 "id=" + buyer_id +
                 ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", Surname='" + Surname + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 ", postcode=" + postcode +

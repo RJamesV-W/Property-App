@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './BuyerPage.css'
 import { Link } from 'react-router-dom';
 
-let jsonURL = "http://localhost:8080/buyer"
+let jsonURL = "http://localhost:8080"
 
 function BuyerPage() {
   const [buyers, setBuyers] = useState([]);
@@ -19,7 +19,7 @@ function BuyerPage() {
   });
 
   useEffect(() => {
-    fetch(jsonURL)
+    fetch(`${jsonURL}/buyer/read`)
       .then(response => response.json())
       .then(data => setBuyers(data))
       .catch(error => console.error(error));
@@ -99,7 +99,7 @@ function BuyerPage() {
         <tbody>
           {buyers.map(buyer => (
             <tr key={buyer.id}>
-              <td>{buyer.id}</td>
+              <td>{buyer.buyer_id}</td>
               <td>{buyer.firstName}</td>
               <td>{buyer.surname}</td>
               <td>{buyer.address}</td>
