@@ -17,7 +17,7 @@ public class Seller {
     private String firstName;
 
     @Column(nullable = false)
-    private String Surname;
+    private String surname;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -40,10 +40,10 @@ public class Seller {
         return seller_id;
     }
 
-    public Seller(long id, String firstName, String Surname, String email, String address, String postcode, String phone, List<Property> propertyList) {
+    public Seller(long id, String firstName, String surname, String email, String address, String postcode, String phone, List<Property> propertyList) {
         this.seller_id = id;
         this.firstName = firstName;
-        this.Surname = Surname;
+        this.surname = surname;
         this.email = email;
         this.address = address;
         this.postcode = postcode;
@@ -51,10 +51,10 @@ public class Seller {
         this.propertyList = propertyList;
     }
 
-    public Seller(long id, String firstName, String Surname, String email, String address, String postcode, String phone) {
+    public Seller(long id, String firstName, String surname, String email, String address, String postcode, String phone) {
         this.seller_id = id;
         this.firstName = firstName;
-        this.Surname = Surname;
+        this.surname = surname;
         this.email = email;
         this.address = address;
         this.postcode = postcode;
@@ -120,11 +120,11 @@ public class Seller {
     }
 
     public String getSurname() {
-        return Surname;
+        return surname;
     }
 
-    public void setSurname(String Surname) {
-        this.Surname = Surname;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     @Override
@@ -132,7 +132,7 @@ public class Seller {
         return "Seller{" +
                 "seller_id=" + seller_id +
                 ", firstName='" + firstName + '\'' +
-                ", Surname='" + Surname + '\'' +
+                ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 ", postcode='" + postcode + '\'' +
