@@ -26,6 +26,7 @@ function PropertyPage() {
       .then((data) => {
         setProperties(data);
         setFilteredProperties(data);
+        console.log(data)
       })
       .catch((error) => console.error(error));
   }, []);
@@ -56,32 +57,6 @@ function PropertyPage() {
     setFilteredProperties(filteredProperties);
   }
 
-  const refreshProperties = async () => {
-    try {
-      const sellersResponse = await fetch("http://localhost:8080/seller");
-      const sellers = await sellersResponse.json();
-      const sellerIds = sellers.map((seller) => seller.id);
-  
-      const propertiesResponse = await fetch(jsonURL);
-      const propertiesData = await propertiesResponse.json();
-  
-      const deletePromises = propertiesData.map(async (property) => {
-        if (!sellerIds.includes(property.sellerId)) {
-          await fetch(`${jsonURL}/${property.id}`, { method: 'DELETE' });
-        }
-        return sellerIds.includes(property.sellerId);
-      });
-  
-      const propertiesStatus = await Promise.all(deletePromises);
-      const filteredData = propertiesData.filter((_, index) => propertiesStatus[index]);
-      setProperties(filteredData);
-      setFilteredProperties(filteredData); // Add this line to update filteredProperties as well
-      resetSearchCriteria();
-    } catch (error) {
-      console.error(error);
-    }
-  };  
-
   const resetSearchCriteria = () => {
     setSearchCriteria({
       address: '',
@@ -100,7 +75,6 @@ function PropertyPage() {
     <div>
       <h1>Properties</h1>
       <button onClick={() => setShowSearchModal(true)}>Search</button>
-			<button onClick={refreshProperties}>Refresh</button>
       <table>
         <thead>
           <tr>
@@ -125,8 +99,8 @@ function PropertyPage() {
               <td>{property.postcode}</td>
               <td>{property.type}</td>
               <td>{property.price}</td>
-              <td>{property.bedroom}</td>
-              <td>{property.bathroom}</td>
+              <td>{property.bedrooms}</td>
+              <td>{property.bathrooms}</td>
               <td>{property.garden === 1 ? 'Yes' : 'No'}</td>
               <td>{property.sellerId}</td>
               <td>{property.status}</td>

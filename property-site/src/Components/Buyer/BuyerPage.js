@@ -21,7 +21,17 @@ function BuyerPage() {
   useEffect(() => {
     fetch(`${jsonURL}/buyer/read`)
       .then(response => response.json())
-      .then(data => setBuyers(data))
+      .then(data => {
+        console.log(data)
+        setBuyers(data);
+        /*return Promise.all(
+          data.map(seller =>
+            fetch(`${jsonURL}/property?sellerId=${seller.id}`)
+              .then(response => response.json())
+              .then(properties => ({ sellerId: seller.id, count: properties.length }))
+          )
+        );*/
+      })
       .catch(error => console.error(error));
   }, []);
 
@@ -90,6 +100,7 @@ function BuyerPage() {
             <th>ID</th>
             <th>First Name</th>
             <th>Surname</th>
+            <th>Email</th>
             <th>Address</th>
             <th>Postcode</th>
             <th>Phone</th>
@@ -102,6 +113,7 @@ function BuyerPage() {
               <td>{buyer.buyer_id}</td>
               <td>{buyer.firstName}</td>
               <td>{buyer.surname}</td>
+              <td>{buyer.email}</td>
               <td>{buyer.address}</td>
               <td>{buyer.postcode}</td>
               <td>{buyer.phone}</td>

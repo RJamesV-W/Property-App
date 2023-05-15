@@ -81,7 +81,7 @@ function SellerPage() {
 
   function handleEditSave(event) {
     event.preventDefault();
-    fetch(`${jsonURL}/${selectedSeller.id}`, {
+    fetch(`${jsonURL}/seller/update/${selectedSeller.seller_id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(editingSeller),
@@ -113,6 +113,7 @@ function SellerPage() {
             <th>ID</th>
             <th>First Name</th>
             <th>Surname</th>
+            <th>Email</th>
             <th>Address</th>
             <th>Postcode</th>
             <th>Phone</th>
@@ -125,7 +126,8 @@ function SellerPage() {
             <tr key={seller.seller_id}>
               <td>{seller.seller_id}</td>
               <td>{seller.firstName}</td>
-              <td>{seller.lastName}</td>
+              <td>{seller.surname}</td>
+              <td>{seller.email}</td>
               <td>{seller.address}</td>
               <td>{seller.postcode}</td>
               <td>{seller.phone}</td>
