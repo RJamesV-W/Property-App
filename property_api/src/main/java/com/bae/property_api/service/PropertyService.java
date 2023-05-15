@@ -53,9 +53,8 @@ public class PropertyService {
         if (property.getPrice()!=null) toUpdate.setAddress(property.getAddress());
         if (property.getStatus()!=null) toUpdate.setAddress(property.getAddress());
         if (property.getType()!=null) toUpdate.setAddress(property.getAddress());
-        if (property.getBathrooms()!=null) toUpdate.setAddress(property.getAddress());
-        if (property.getBedrooms()!=null) toUpdate.setAddress(property.getAddress());
-        if (property.getGarden()!=null) toUpdate.setAddress(property.getAddress());
+        if (property.getBathrooms()!=0) toUpdate.setAddress(property.getAddress());
+        if (property.getBedrooms()!=0) toUpdate.setAddress(property.getAddress());
         //if (property.getSeller_id_fk()!=null) toUpdate.setAddress(property.getAddress());
         if (property.getSeller()!=null) toUpdate.setAddress(property.getAddress());
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "./PropertyPage.css"
 
-let jsonURL = "http://localhost:8080/property";
+let jsonURL = "http://localhost:8080";
 
 function PropertyPage() {
   const [properties, setProperties] = useState([]);
@@ -21,7 +21,7 @@ function PropertyPage() {
   });
 
   useEffect(() => {
-    fetch(jsonURL)
+    fetch(`${jsonURL}/property/read`)
       .then((response) => response.json())
       .then((data) => {
         setProperties(data);

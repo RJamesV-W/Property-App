@@ -13,9 +13,9 @@ public class Property {
     private String price;
     private String status;
     private String type;
-    private String bedrooms;
-    private String bathrooms;
-    private String garden;
+    private int bedrooms;
+    private int bathrooms;
+    private boolean garden;
 
     @JoinColumn(name = "seller_id_fk")
     @ManyToOne
@@ -39,7 +39,7 @@ public class Property {
      * @param garden      Garden availability
      * @param seller      Seller object
      */
-    public Property(long property_id, String address, String postcode, String price, String status, String type, String bedrooms, String bathrooms, String garden, Seller seller) {
+    public Property(long property_id, String address, String postcode, String price, String status, String type, int bedrooms, int bathrooms, boolean garden, Seller seller) {
         this.property_id = property_id;
         this.address = address;
         this.postcode = postcode;
@@ -100,27 +100,27 @@ public class Property {
         this.type = type;
     }
 
-    public String getBedrooms() {
+    public int getBedrooms() {
         return bedrooms;
     }
 
-    public void setBedrooms(String bedrooms) {
+    public void setBedrooms(int bedrooms) {
         this.bedrooms = bedrooms;
     }
 
-    public String getBathrooms() {
+    public int getBathrooms() {
         return bathrooms;
     }
 
-    public void setBathrooms(String bathrooms) {
+    public void setBathrooms(int bathrooms) {
         this.bathrooms = bathrooms;
     }
 
-    public String getGarden() {
+    public boolean getGarden() {
         return garden;
     }
 
-    public void setGarden(String garden) {
+    public void setGarden(boolean garden) {
         this.garden = garden;
     }
 
