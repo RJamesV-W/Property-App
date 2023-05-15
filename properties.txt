@@ -1,0 +1,88 @@
+  {
+    "address": "123 Main St",
+    "postcode": "SW1A 1AA",
+    "type": "APARTMENT",
+    "price": "500000",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "garden": 0,
+    "seller": 1,
+    "status": "FOR SALE"
+  },
+  {
+    "address": "456 Park Ave",
+    "postcode": "W1A 0AA",
+    "type": "DETACHED",
+    "price": 750000,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "garden": 1,
+    "seller": 2,
+    "status": "SOLD"
+  },
+  {
+    "address": "789 Broadway St",
+    "postcode": "EC1A 1BB",
+    "type": "SEMI_DETACHED",
+    "price": 600000,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "garden": 1,
+    "seller": 1,
+    "status": "WITHDRAWN"
+  },
+  {
+    "address": "321 Elm St",
+    "postcode": "WC1A 1AB",
+    "type": "TERRACED",
+    "price": 400000,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "garden": 0,
+    "seller": 3,
+    "status": "FOR SALE"
+  },
+  {
+    "address": "654 Oak Ave",
+    "postcode": "EC1A 1BA",
+    "type": "BUNGALOW",
+    "price": 350000,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "garden": 1,
+    "seller": 4,
+    "status": "FOR SALE"
+  },
+  {
+    "address": "987 Cedar St",
+    "postcode": "WC1A 1BA",
+    "type": "COTTAGE",
+    "price": 300000,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "garden": 1,
+    "seller": 5,
+    "status": "SOLD"
+  },
+  {
+    "address": "2468 Pine Ave",
+    "postcode": "SW1A 1BB",
+    "type": "APARTMENT",
+    "price": 450000,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "garden": 0,
+    "seller": 1,
+    "status": "FOR SALE"
+  },
+  {
+    "address": "1357 Maple St",
+    "postcode": "W1A 1BB",
+    "type": "DETACHED",
+    "price": 800000,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "garden": 1,
+    "seller": 2,
+    "status": "SOLD"
+  }

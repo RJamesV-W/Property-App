@@ -1,6 +1,8 @@
 package com.bae.property_api.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -32,15 +34,17 @@ public class Seller {
     private String phone;
 
     // One seller can have many properties
-    @OneToMany(mappedBy = "seller", fetch = FetchType.EAGER)
+    @OneToMany//(mappedBy = "seller", fetch = FetchType.EAGER)
     @JsonIgnore
-    private List<Property> propertyList;
+    //@JsonBackReference ("prop-ref")
+    //@JsonIgnoreProperties({"seller"})
+    private List<Property> propertyCount;
 
     public long getSeller_id() {
         return seller_id;
     }
 
-    public Seller(long id, String firstName, String surname, String email, String address, String postcode, String phone, List<Property> propertyList) {
+    public Seller(long id, String firstName, String surname, String email, String address, String postcode, String phone, List<Property> propertyCount) {
         this.seller_id = id;
         this.firstName = firstName;
         this.surname = surname;
@@ -48,7 +52,7 @@ public class Seller {
         this.address = address;
         this.postcode = postcode;
         this.phone = phone;
-        this.propertyList = propertyList;
+        this.propertyCount = propertyCount;
     }
 
     public Seller(long id, String firstName, String surname, String email, String address, String postcode, String phone) {
@@ -94,11 +98,11 @@ public class Seller {
 
 
     public List<Property> getPropertiesList() {
-        return propertyList;
+        return propertyCount;
     }
 
-    public void setPropertiesList(List<Property> propertyList) {
-        this.propertyList = propertyList;
+    public void setPropertiesList(List<Property> propertyCount) {
+        this.propertyCount = propertyCount;
     }
 
     public Seller() {
@@ -137,7 +141,7 @@ public class Seller {
                 ", address='" + address + '\'' +
                 ", postcode='" + postcode + '\'' +
                 ", phone=" + phone +
-                ", propertiesList=" + propertyList +
+                ", propertiesList=" + propertyCount +
                 '}';
     }
 }

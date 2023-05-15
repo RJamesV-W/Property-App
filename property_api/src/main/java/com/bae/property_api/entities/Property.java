@@ -1,5 +1,6 @@
 package com.bae.property_api.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -19,6 +20,7 @@ public class Property {
 
     @JoinColumn(name = "seller_id_fk")
     @ManyToOne
+    //@JsonManagedReference ("prop-ref")
     private Seller seller;
 
     // Default constructor

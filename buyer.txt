@@ -1,0 +1,74 @@
+[
+    {
+        "buyer_id": 1,
+        "firstName": "Gary",
+        "email": "gary.green@example.com",
+        "address": "102 South St",
+        "postcode": "SE1 1AA",
+        "phone": "+441234567898",
+        "surname": "Green"
+    },
+    {
+        "buyer_id": 2,
+        "firstName": "Hannah",
+        "email": "hannah.hall@example.com",
+        "address": "203 West Ave",
+        "postcode": "NW1 1AA",
+        "phone": "+441234567899",
+        "surname": "Hall"
+    },
+    {
+        "buyer_id": 3,
+        "firstName": "Ivan",
+        "email": "ivan.iverson@example.com",
+        "address": "304 East Blvd",
+        "postcode": "NE1 1BB",
+        "phone": "+441234567900",
+        "surname": "Iverson"
+    },
+    {
+        "buyer_id": 4,
+        "firstName": "Julia",
+        "email": "julia.jones@example.com",
+        "address": "405 North Rd",
+        "postcode": "SW1W 0DT",
+        "phone": "+441234567901",
+        "surname": "Jones"
+    },
+    {
+        "buyer_id": 5,
+        "firstName": "Kevin",
+        "email": "kevin.king@example.com",
+        "address": "506 Central St",
+        "postcode": "SE1 9GF",
+        "phone": "+441234567902",
+        "surname": "King"
+    },
+    {
+        "buyer_id": 6,
+        "firstName": "Laura",
+        "email": "laura.lee@example.com",
+        "address": "607 Mountain Ave",
+        "postcode": "EC2V 7NQ",
+        "phone": "+441234567903",
+        "surname": "Lee"
+    },
+    {
+        "buyer_id": 7,
+        "firstName": "Mike",
+        "email": "mike.moore@example.com",
+        "address": "708 Hill St",
+        "postcode": "EC3V 4AB",
+        "phone": "+441234567904",
+        "surname": "Moore"
+    },
+    {
+        "buyer_id": 8,
+        "firstName": "Nina",
+        "email": "nina.nelson@example.com",
+        "address": "809 Lake Blvd",
+        "postcode": "WC2N 5DU",
+        "phone": "+441234567905",
+        "surname": "Nelson"
+    }
+]

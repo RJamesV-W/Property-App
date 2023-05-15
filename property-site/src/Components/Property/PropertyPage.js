@@ -57,20 +57,6 @@ function PropertyPage() {
     setFilteredProperties(filteredProperties);
   }
 
-  const resetSearchCriteria = () => {
-    setSearchCriteria({
-      address: '',
-      postcode: '',
-      minPrice: '',
-      maxPrice: '',
-      type: '',
-      bedrooms: '',
-      bathrooms: '',
-      garden: '',
-      status: ''
-    });
-  };  
-
   return (
     <div>
       <h1>Properties</h1>

@@ -1,0 +1,82 @@
+[
+    {
+        "seller_id": 1,
+        "firstName": "John",
+        "email": "john.doe@example.com",
+        "address": "123 Main St",
+        "postcode": "SW1A 1AA",
+        "phone": "+441234567891",
+        "propertiesList": [],
+        "surname": "Doe"
+    },
+    {
+        "seller_id": 2,
+        "firstName": "Jane",
+        "email": "jane.doe@example.com",
+        "address": "456 Park Ave",
+        "postcode": "W1A 0AA",
+        "phone": "+441234567891",
+        "propertiesList": [],
+        "surname": "Doe"
+    },
+    {
+        "seller_id": 3,
+        "firstName": "Alice",
+        "email": "alice.johnson@example.com",
+        "address": "789 Broadway St",
+        "postcode": "EC1A 1BB",
+        "phone": "+441234567892",
+        "propertiesList": [],
+        "surname": "Johnson"
+    },
+    {
+        "seller_id": 4,
+        "firstName": "Bob",
+        "email": "bob.smith@example.com",
+        "address": "321 Elm St",
+        "postcode": "WC1A 1AB",
+        "phone": "+441234567893",
+        "propertiesList": [],
+        "surname": "Smith"
+    },
+    {
+        "seller_id": 5,
+        "firstName": "Charlie",
+        "email": "charlie.brown@example.com",
+        "address": "654 Oak Ave",
+        "postcode": "EC1A 1BA",
+        "phone": "+441234567894",
+        "propertiesList": [],
+        "surname": "Brown"
+    },
+    {
+        "seller_id": 6,
+        "firstName": "David",
+        "email": "david.davis@example.com",
+        "address": "987 Cedar St",
+        "postcode": "WC1A 1BA",
+        "phone": "+441234567895",
+        "propertiesList": [],
+        "surname": "Davis"
+    },
+    {
+        "seller_id": 7,
+        "firstName": "Eva",
+        "email": "eva.white@example.com",
+        "address": "2468 Pine Ave",
+        "postcode": "SW1A 1BB",
+        "phone": "+441234567896",
+        "propertiesList": [],
+        "surname": "White"
+    },
+    {
+        "seller_id": 8,
+        "firstName": "Frank",
+        "email": "frank.black@example.com",
+        "address": "1357 Maple St",
+        "postcode": "W1A 1BB",
+        "phone": "+441234567897",
+        "propertiesList": [],
+        "surname": "Black"
+    }
+]
