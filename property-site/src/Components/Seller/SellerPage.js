@@ -56,9 +56,12 @@ function SellerPage() {
       headers: { 'Content-Type': 'application/json' },
     })
       .then(() => {
-        const updatedSellers = sellers.filter(s => s.seller_id !== selectedSeller.seller_id);
-        setSellers(updatedSellers);
         setShowModal(false);
+        return fetch(`${jsonURL}/seller/read`);
+      })
+      .then(response => response.json())
+      .then(data => {
+        setSellers(data);
       })
       .catch(error => console.error(error));
   }

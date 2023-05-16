@@ -47,13 +47,15 @@ function BuyerPage() {
       headers: { 'Content-Type': 'application/json' },
     })
       .then(() => {
-        const updatedBuyers = buyers.filter(s => s.buyer_id !== selectedBuyer.buyer_id);
-        const reindexedBuyers = updatedBuyers.map((s, index) => ({ ...s, buyer_id: index + 1 }));
-        setBuyers(reindexedBuyers);
         setShowModal(false);
+        return fetch(`${jsonURL}/buyer/read`);
+      })
+      .then(response => response.json())
+      .then(data => {
+        setBuyers(data);
       })
       .catch(error => console.error(error));
-  }
+  }  
   
   function handleEdit() {
     // Load the selected buyer into the form for editing

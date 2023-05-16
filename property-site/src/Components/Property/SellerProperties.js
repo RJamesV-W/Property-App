@@ -21,16 +21,20 @@ function SellerPropertiesPage() {
 	const [status, setStatus] = useState("For Sale")
 
   useEffect(() => {
-    fetch(`${jsonURL}/seller/${sellerId}`)
+    fetch(`${jsonURL}/seller/read/${sellerId}`)
       .then(response => response.json())
       .then(data => setSeller(data))
       .catch(error => console.error(error));
   }, [sellerId]);
 
   useEffect(() => {
-    fetch(`${jsonURL}/property?sellerId=${sellerId}`)
+    fetch(`${jsonURL}/property/read`)
       .then(response => response.json())
-      .then(data => setProperties(data))
+      .then(data => {
+				console.log(data)
+				console.log(sellerId)
+				setProperties(data.filter(property => property.seller.seller_id === parseInt(sellerId)))
+			})
       .catch(error => console.error(error));
   }, [sellerId]);
 
@@ -47,13 +51,13 @@ function SellerPropertiesPage() {
 		setBedrooms(selectedProperty.bedroom);
 		setBathrooms(selectedProperty.bathroom);
 		setGarden(selectedProperty.garden === 1);
-		setStatus(selectedProperty.status); // Add this line
+		setStatus(selectedProperty.status);
 		setShowModal(false);
 		setShowEditModal(true);
 	};
 
-	const handleEditSave = (e) => {
-		e.preventDefault();
+	const handleEditSave = (edit) => {
+		edit.preventDefault();
 	
 		const updatedProperty = {
 			...selectedProperty,
@@ -64,10 +68,11 @@ function SellerPropertiesPage() {
 			bedroom: bedrooms,
 			bathroom: bathrooms,
 			garden: garden ? 1 : 0,
-			status, // Add the status field
+			status,
 		};
-	
-		fetch(`${jsonURL}/property/${selectedProperty.seller.seller_id}`, {
+		console.log(updatedProperty)
+		console.log(selectedProperty)
+		fetch(`${jsonURL}/property/update/${selectedProperty.seller.seller_id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
@@ -75,7 +80,6 @@ function SellerPropertiesPage() {
 			body: JSON.stringify(updatedProperty),
 		})
 		.then(() => {
-			// Update the properties list to reflect the changes
 			setProperties(properties.map((property) => (property.property_id === selectedProperty.property_id ? updatedProperty : property)));
 			setShowEditModal(false);
 		})
@@ -87,7 +91,6 @@ function SellerPropertiesPage() {
 			method: 'DELETE',
 		})
 			.then(() => {
-				// Remove the deleted property from the properties list
 				setProperties(properties.filter((property) => property.property_id !== selectedProperty.property_id));
 				setShowModal(false);
 			})
@@ -128,8 +131,8 @@ function SellerPropertiesPage() {
               <td>{property.postcode}</td>
               <td>{property.type}</td>
               <td>{property.price}</td>
-              <td>{property.bedroom}</td>
-              <td>{property.bathroom}</td>
+              <td>{property.bedrooms}</td>
+              <td>{property.bathrooms}</td>
               <td>{property.garden ? 'Yes' : 'No'}</td>
               <td>{property.status}</td>
 							<button onClick={() => handleManage(property)}>Manage</button>{/* Action buttons for editing and deleting properties */}
@@ -152,14 +155,14 @@ function SellerPropertiesPage() {
 			{showEditModal && (
 				<div className="modal">
 					<div className="modal-content">
-						<h3>Edit Buyer</h3>
+						<h3>Edit Property</h3>
 						<form onSubmit={handleEditSave}>
 							<label>
 								Address:
 								<input
 									type="text"
 									value={address}
-									onChange={(e) => setAddress(e.target.value)}
+									onChange={(edit) => setAddress(edit.target.value)}
 								/>
 							</label><br/>
 							<label>
@@ -167,7 +170,7 @@ function SellerPropertiesPage() {
 								<input
 									type="text"
 									value={postcode}
-									onChange={(e) => setPostcode(e.target.value)}
+									onChange={(edit) => setPostcode(edit.target.value)}
 								/>
 							</label><br/>
 							<label>
@@ -176,12 +179,12 @@ function SellerPropertiesPage() {
 									type="number"
 									min="0"
 									value={price}
-									onChange={(e) => setPrice(parseInt(e.target.value))}
+									onChange={(edit) => setPrice(parseInt(edit.target.value))}
 								/>
 							</label><br/>
 							<label>
 								Type:
-								<select value={type} onChange={(e) => setType(e.target.value)}>
+								<select value={type} onChange={(edit) => setType(edit.target.value)}>
 									<option value="APARTMENT">Apartment</option>
 									<option value="DETACHED">Detached</option>
 									<option value="SEMI_DETACHED">Semi-detached</option>
@@ -196,7 +199,7 @@ function SellerPropertiesPage() {
 									type="number"
 									min="0"
 									value={bedrooms}
-									onChange={(e) => setBedrooms(parseInt(e.target.value))}
+									onChange={(edit) => setBedrooms(parseInt(edit.target.value))}
 								/>
 							</label><br/>
 							<label>
@@ -205,7 +208,7 @@ function SellerPropertiesPage() {
 									type="number"
 									min="0"
 									value={bathrooms}
-									onChange={(e) => setBathrooms(parseInt(e.target.value))}
+									onChange={(edit) => setBathrooms(parseInt(edit.target.value))}
 								/>
 							</label><br/>
 							<legend>Garden:</legend>
@@ -229,7 +232,7 @@ function SellerPropertiesPage() {
 							</label><br/>
 							<label>
 								Status:
-								<select value={status} onChange={(e) => setStatus(e.target.value)}>
+								<select value={status} onChange={(edit) => setStatus(edit.target.value)}>
 									<option value="FOR SALE">FOR SALE</option>
 									<option value="SOLD">SOLD</option>
 									<option value="WITHDRAWN">WITHDRAWN</option>
