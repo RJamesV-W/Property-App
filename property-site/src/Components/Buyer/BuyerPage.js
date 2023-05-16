@@ -75,7 +75,7 @@ function BuyerPage() {
 
   function handleEditSave(event) {
     event.preventDefault();
-    fetch(`${jsonURL}/${selectedBuyer.buyer_id}`, {
+    fetch(`${jsonURL}/buyer/update/${selectedBuyer.buyer_id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(editingBuyer),
