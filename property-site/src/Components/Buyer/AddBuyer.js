@@ -9,11 +9,11 @@ function AddBuyer({ onAddBuyer }) {
   const [newBuyer, setNewBuyer] = useState({
     firstName: '',
     surname: '',
+    email: '',
     address: '',
     postcode: '',
     phone: '',
   });
-
 	const [validationMessages, setValidationMessages] = useState({});
 
   const handleChange = (event) => {
@@ -42,18 +42,18 @@ function AddBuyer({ onAddBuyer }) {
 			return;
 		}
 	
-		fetch('${jsonURL}/buyer/add', {
+		fetch(`${jsonURL}/buyer/add`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(newBuyer),
 		})
-			.then((response) => response.json())
-			.then((data) => onAddBuyer(data))
-			.catch((error) => console.error(error));
+		.then((response) => response.json())
+		.then((data) => {
+      setNewBuyer({ firstName: '', surname: '', email: '', address: '', postcode: '', phone: '' });
+      navigate('/buyer');
+    })
+		.catch((error) => console.error(error));
 	
-		setNewBuyer({ firstName: '', surname: '', email: '', address: '', postcode: '', phone: '' });
-	
-		navigate('/buyer');
 	};
 
   const handleCancel = () => {
@@ -75,27 +75,27 @@ function AddBuyer({ onAddBuyer }) {
       <form onSubmit={handleSubmit} className="form-container">
         <h2>Add Buyer</h2>
         <label>First Name:</label>
-        <input type="text" name="firstName" className='submitText' value={newBuyer.firstName} onChange={handleChange} /><br/>
+        <input type="text" name="firstName" className='submitText' value={newBuyer.firstName} onChange={handleChange} required /><br/>
 				{validationMessages.firstName && <p className="validation-message">{validationMessages.firstName}</p>}<br/>
 
         <label>Surname:</label>
-        <input type="text" name="surname" className='submitText' value={newBuyer.surname} onChange={handleChange} /><br/>
+        <input type="text" name="surname" className='submitText' value={newBuyer.surname} onChange={handleChange} required /><br/>
 				{validationMessages.surname && <p className="validation-message">{validationMessages.surname}</p>}<br/>
 
         <label>Email:</label>
-        <input type="text" name="email" className='submitText' value={newBuyer.email} onChange={handleChange} /><br/>
+        <input type="email" name="email" className='submitText' value={newBuyer.email} onChange={handleChange} required /><br/>
 				{validationMessages.email && <p className="validation-message">{validationMessages.email}</p>}<br/>
 
         <label>Address:</label>
-        <input type="text" name="address" className='submitText' value={newBuyer.address} onChange={handleChange} /><br/>
+        <input type="text" name="address" className='submitText' value={newBuyer.address} onChange={handleChange} required /><br/>
 				{validationMessages.address && <p className="validation-message">{validationMessages.address}</p>}<br/>
 
         <label>Postcode:</label>
-        <input type="text" name="postcode" className='submitText' value={newBuyer.postcode} onChange={handleChange} /><br/>
+        <input type="text" name="postcode" className='submitText' value={newBuyer.postcode} onChange={handleChange} required /><br/>
 				{validationMessages.postcode && <p className="validation-message">{validationMessages.postcode}</p>}<br/>
 
         <label>Phone:</label>
-        <input type="text" name="phone" className='submitText' value={newBuyer.phone} onChange={handleChange} /><br/>
+        <input type="text" name="phone" className='submitText' value={newBuyer.phone} onChange={handleChange} required /><br/>
 				{validationMessages.phone && <p className="validation-message">{validationMessages.phone}</p>}<br/>
 
         <button type="submit" className="submit-button">Add Buyer</button>

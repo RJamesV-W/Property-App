@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 //import "./SellerPage.css"
 
-let jsonURL = "http://localhost:8080/seller";
+let jsonURL = "http://localhost:8080";
 
 function AddSeller({ onAddSeller }) {
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ function AddSeller({ onAddSeller }) {
 			return;
 		}
 	
-		fetch(jsonURL, {
+		fetch(`${jsonURL}/seller/add`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(newSeller),
@@ -51,7 +51,7 @@ function AddSeller({ onAddSeller }) {
 			.then((data) => onAddSeller(data))
 			.catch((error) => console.error(error));
 	
-		setNewSeller({ firstName: '', surname: '', address: '', postcode: '', phone: '' });
+		setNewSeller({ firstName: '', surname: '', email: '', address: '', postcode: '', phone: '' });
 	
 		navigate('/seller');
 	};
@@ -60,6 +60,7 @@ function AddSeller({ onAddSeller }) {
     setNewSeller({
       firstName: '',
       surname: '',
+      email: '',
       address: '',
       postcode: '',
       phone: '',
@@ -80,6 +81,10 @@ function AddSeller({ onAddSeller }) {
         <label>Surname:</label>
         <input type="text" name="surname" className='submitText' value={newSeller.surname} onChange={handleChange} /><br/>
 				{validationMessages.surname && <p className="validation-message">{validationMessages.surname}</p>}<br/>
+
+        <label>Email:</label>
+        <input type="text" name="email" className='submitText' value={newSeller.email} onChange={handleChange} /><br/>
+				{validationMessages.address && <p className="validation-message">{validationMessages.address}</p>}<br/>
 
         <label>Address:</label>
         <input type="text" name="address" className='submitText' value={newSeller.address} onChange={handleChange} /><br/>

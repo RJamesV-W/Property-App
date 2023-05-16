@@ -29,9 +29,9 @@ function SellerPage() {
         setSellers(data);
         /*return Promise.all(
           data.map(seller =>
-            fetch(`${jsonURL}/property?sellerId=${seller.id}`)
+            fetch(`${jsonURL}/property?sellerId=${seller.seller_id}`)
               .then(response => response.json())
-              .then(properties => ({ sellerId: seller.id, count: properties.length }))
+              .then(properties => ({ sellerId: seller.seller_id, count: properties.length }))
           )
         );*/
       })
@@ -51,12 +51,12 @@ function SellerPage() {
 
   function handleDelete() {
     // Delete the selected seller and update the state
-    fetch(`${jsonURL}/${selectedSeller.id}`, {
+    fetch(`${jsonURL}/seller/delete/${selectedSeller.seller_id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     })
       .then(() => {
-        const updatedSellers = sellers.filter(s => s.id !== selectedSeller.id);
+        const updatedSellers = sellers.filter(s => s.seller_id !== selectedSeller.seller_id);
         setSellers(updatedSellers);
         setShowModal(false);
       })
@@ -88,7 +88,7 @@ function SellerPage() {
     })
       .then(response => response.json())
       .then(updatedSeller => {
-        const updatedSellers = sellers.map(s => (s.id === updatedSeller.id ? updatedSeller : s));
+        const updatedSellers = sellers.map(s => (s.seller_id === updatedSeller.seller_id ? updatedSeller : s));
         setSellers(updatedSellers);
         setNewSeller({ firstName: '', surname: '', address: '', postcode: '', phone: '' });
         setShowEditModal(false);
@@ -97,7 +97,7 @@ function SellerPage() {
   }
 
   function handleProperties() {
-    navigate(`/seller-properties/${selectedSeller.id}`);
+    navigate(`/seller-properties/${selectedSeller.seller_id}`);
     setShowModal(false);
   }
 
@@ -131,7 +131,7 @@ function SellerPage() {
               <td>{seller.address}</td>
               <td>{seller.postcode}</td>
               <td>{seller.phone}</td>
-              <td>{getPropertyCount(seller.id)}</td>
+              <td>{getPropertyCount(seller.seller_id)}</td>
               <td><button onClick={() => handleManageButtonClick(seller)}>Manage</button></td>
             </tr>
           ))}

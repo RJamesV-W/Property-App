@@ -79,16 +79,16 @@ function PropertyPage() {
         </thead>
         <tbody>
           {filteredProperties.map((property) => (
-            <tr key={property.id}>
-              <td>{property.id}</td>
+            <tr key={property.property_id}>
+              <td>{property.property_id}</td>
               <td>{property.address}</td>
               <td>{property.postcode}</td>
               <td>{property.type}</td>
               <td>{property.price}</td>
               <td>{property.bedrooms}</td>
               <td>{property.bathrooms}</td>
-              <td>{property.garden === 1 ? 'Yes' : 'No'}</td>
-              <td>{property.sellerId}</td>
+              <td>{property.garden === true ? 'Yes' : 'No'}</td>
+              <td>{property.seller.seller_id}</td>
               <td>{property.status}</td>
               <td>{property.buyerId || 'N/A'}</td>
             </tr>

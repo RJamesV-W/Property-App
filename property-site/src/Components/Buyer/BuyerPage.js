@@ -26,9 +26,9 @@ function BuyerPage() {
         setBuyers(data);
         /*return Promise.all(
           data.map(seller =>
-            fetch(`${jsonURL}/property?sellerId=${seller.id}`)
+            fetch(`${jsonURL}/property?sellerId=${seller.buyer_id}`)
               .then(response => response.json())
-              .then(properties => ({ sellerId: seller.id, count: properties.length }))
+              .then(properties => ({ sellerId: seller.buyer_id, count: properties.length }))
           )
         );*/
       })
@@ -42,13 +42,13 @@ function BuyerPage() {
 
   function handleDelete() {
     // Delete the selected buyer and update the state
-    fetch(`${jsonURL}/${selectedBuyer.id}`, {
+    fetch(`${jsonURL}/buyer/delete/${selectedBuyer.buyer_id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     })
       .then(() => {
-        const updatedBuyers = buyers.filter(s => s.id !== selectedBuyer.id);
-        const reindexedBuyers = updatedBuyers.map((s, index) => ({ ...s, id: index + 1 }));
+        const updatedBuyers = buyers.filter(s => s.buyer_id !== selectedBuyer.buyer_id);
+        const reindexedBuyers = updatedBuyers.map((s, index) => ({ ...s, buyer_id: index + 1 }));
         setBuyers(reindexedBuyers);
         setShowModal(false);
       })
@@ -73,14 +73,14 @@ function BuyerPage() {
 
   function handleEditSave(event) {
     event.preventDefault();
-    fetch(`${jsonURL}/${selectedBuyer.id}`, {
+    fetch(`${jsonURL}/${selectedBuyer.buyer_id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(editingBuyer),
     })
       .then(response => response.json())
       .then(updatedBuyer => {
-        const updatedBuyers = buyers.map(s => (s.id === updatedBuyer.id ? updatedBuyer : s));
+        const updatedBuyers = buyers.map(s => (s.buyer_id === updatedBuyer.buyer_id ? updatedBuyer : s));
         setBuyers(updatedBuyers);
         setNewBuyer({ firstName: '', surname: '', address: '', postcode: '', phone: '' });
         setShowEditModal(false);
@@ -109,7 +109,7 @@ function BuyerPage() {
         </thead>
         <tbody>
           {buyers.map(buyer => (
-            <tr key={buyer.id}>
+            <tr key={buyer.buyer_id}>
               <td>{buyer.buyer_id}</td>
               <td>{buyer.firstName}</td>
               <td>{buyer.surname}</td>

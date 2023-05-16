@@ -83,7 +83,7 @@ function SellerPropertiesPage() {
 	};
 
 	const handleDelete = () => {
-		fetch(`${jsonURL}/property/${selectedProperty.id}`, {
+		fetch(`${jsonURL}/property/read/${selectedProperty.id}`, {
 			method: 'DELETE',
 		})
 			.then(() => {
