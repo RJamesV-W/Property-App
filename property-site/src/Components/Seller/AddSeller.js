@@ -9,6 +9,7 @@ function AddSeller({ onAddSeller }) {
   const [newSeller, setNewSeller] = useState({
     firstName: '',
     surname: '',
+    email: '',
     address: '',
     postcode: '',
     phone: '',
@@ -75,27 +76,27 @@ function AddSeller({ onAddSeller }) {
       <form onSubmit={handleSubmit} className="form-container">
         <h2>Add Seller</h2>
         <label>First Name:</label>
-        <input type="text" name="firstName" className='submitText' value={newSeller.firstName} onChange={handleChange} /><br/>
+        <input type="text" name="firstName" className='submitText' value={newSeller.firstName} onChange={handleChange} required /><br/>
 				{validationMessages.firstName && <p className="validation-message">{validationMessages.firstName}</p>}<br/>
 
         <label>Surname:</label>
-        <input type="text" name="surname" className='submitText' value={newSeller.surname} onChange={handleChange} /><br/>
+        <input type="text" name="surname" className='submitText' value={newSeller.surname} onChange={handleChange} required /><br/>
 				{validationMessages.surname && <p className="validation-message">{validationMessages.surname}</p>}<br/>
 
         <label>Email:</label>
-        <input type="text" name="email" className='submitText' value={newSeller.email} onChange={handleChange} /><br/>
+        <input type="email" name="email" className='submitText' value={newSeller.email} onChange={handleChange} required /><br/>
 				{validationMessages.address && <p className="validation-message">{validationMessages.address}</p>}<br/>
 
         <label>Address:</label>
-        <input type="text" name="address" className='submitText' value={newSeller.address} onChange={handleChange} /><br/>
+        <input type="text" name="address" className='submitText' value={newSeller.address} onChange={handleChange} required /><br/>
 				{validationMessages.address && <p className="validation-message">{validationMessages.address}</p>}<br/>
 
         <label>Postcode:</label>
-        <input type="text" name="postcode" className='submitText' value={newSeller.postcode} onChange={handleChange} /><br/>
+        <input type="text" name="postcode" className='submitText' value={newSeller.postcode} onChange={handleChange} required /><br/>
 				{validationMessages.postcode && <p className="validation-message">{validationMessages.postcode}</p>}<br/>
 
         <label>Phone:</label>
-        <input type="text" name="phone" className='submitText' value={newSeller.phone} onChange={handleChange} /><br/>
+        <input type="text" name="phone" className='submitText' value={newSeller.phone} onChange={handleChange} required /><br/>
 				{validationMessages.phone && <p className="validation-message">{validationMessages.phone}</p>}<br/>
 
         <button type="submit" className="submit-button">Add Seller</button>

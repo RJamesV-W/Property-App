@@ -67,7 +67,7 @@ function SellerPropertiesPage() {
 			status, // Add the status field
 		};
 	
-		fetch(`${jsonURL}/property/${selectedProperty.id}`, {
+		fetch(`${jsonURL}/property/${selectedProperty.seller.seller_id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
@@ -76,19 +76,19 @@ function SellerPropertiesPage() {
 		})
 		.then(() => {
 			// Update the properties list to reflect the changes
-			setProperties(properties.map((property) => (property.id === selectedProperty.id ? updatedProperty : property)));
+			setProperties(properties.map((property) => (property.property_id === selectedProperty.property_id ? updatedProperty : property)));
 			setShowEditModal(false);
 		})
 		.catch((error) => console.error(error));
 	};
 
 	const handleDelete = () => {
-		fetch(`${jsonURL}/property/read/${selectedProperty.id}`, {
+		fetch(`${jsonURL}/property/read/${selectedProperty.seller.seller_id}`, {
 			method: 'DELETE',
 		})
 			.then(() => {
 				// Remove the deleted property from the properties list
-				setProperties(properties.filter((property) => property.id !== selectedProperty.id));
+				setProperties(properties.filter((property) => property.property_id !== selectedProperty.property_id));
 				setShowModal(false);
 			})
 			.catch((error) => console.error(error));
@@ -122,8 +122,8 @@ function SellerPropertiesPage() {
         </thead>
         <tbody>
           {properties.map(property => (
-            <tr key={property.id}>
-              <td>{property.id}</td>
+            <tr key={property.property_id}>
+              <td>{property.property_id}</td>
               <td>{property.address}</td>
               <td>{property.postcode}</td>
               <td>{property.type}</td>

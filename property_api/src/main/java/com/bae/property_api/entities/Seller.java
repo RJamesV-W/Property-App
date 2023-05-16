@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.List;
 
@@ -21,7 +24,9 @@ public class Seller {
     @Column(nullable = false)
     private String surname;
 
-    @Column(nullable = false, unique = true)
+    @NotNull
+    @Email
+    @Length(min = 5)
     private String email;
 
     @Column(nullable = false)
