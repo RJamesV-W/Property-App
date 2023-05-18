@@ -32,7 +32,7 @@ pipeline {
         stage('Save Artifacts') {
             steps {
                 script {
-                    archiveArtifacts artifacts: 'backend-dir/target/*.jar, frontend-dir/build/*'
+                    archiveArtifacts artifacts: 'property_api/target/*.jar, property-site/build/*'
                 }
             }
         }
