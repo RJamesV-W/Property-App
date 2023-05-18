@@ -39,7 +39,7 @@ pipeline {
     }
     post {
         always {
-            mail to: 'your.email@example.com',
+            mail to: 'jamesvaughanwilliams@gmail.com',
             subject: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
             body: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) finished"
         }
