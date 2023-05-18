@@ -1,6 +1,7 @@
 pipeline {
     agent any
-
+    enviroment{CI=false}
+    
     stages {
         stage('Build Spring backend') {
             steps {
@@ -14,7 +15,6 @@ pipeline {
         
         stage('Build React frontend') {
             steps {
-                enviroment{CI=false}
                 dir('property-site') {
                     script {
                         bat 'npm install'
