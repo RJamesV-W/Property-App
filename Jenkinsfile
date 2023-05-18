@@ -1,7 +1,6 @@
 pipeline {
     agent any
-    enviroment{CI=false}
-    
+   
     stages {
         stage('Build Spring backend') {
             steps {
@@ -14,6 +13,7 @@ pipeline {
         }
         
         stage('Build React frontend') {
+            environment{CI=false}
             steps {
                 dir('property-site') {
                     script {
