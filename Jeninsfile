@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build Spring backend') {
             steps {
-                dir('backend-dir') {
+                dir('property_api') {
                     script {
                         sh 'mvn clean install'
                     }
@@ -20,7 +20,7 @@ pipeline {
 
         stage('Build React frontend') {
             steps {
-                dir('frontend-dir') {
+                dir('property-site') {
                     script {
                         sh 'npm install'
                         sh 'npm run build'
