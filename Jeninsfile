@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/RJamesV-W/Property-App'
+            }
+        }
+
+        stage('Build Spring backend') {
+            steps {
+                dir('backend-dir') {
+                    script {
+                        sh 'mvn clean install'
+                    }
+                }
+            }
+        }
+
+        stage('Build React frontend') {
+            steps {
+                dir('frontend-dir') {
+                    script {
+                        sh 'npm install'
+                        sh 'npm run build'
+                    }
+                }
+            }
+        }
+
+        stage('Save Artifacts') {
+            steps {
+                script {
+                    archiveArtifacts artifacts: 'backend-dir/target/*.jar, frontend-dir/build/*'
+                }
+            }
+        }
+    }
+    post {
+        always {
+            mail to: 'your.email@example.com',
+            subject: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+            body: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) finished"
+        }
+    }
+}
