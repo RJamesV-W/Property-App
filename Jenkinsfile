@@ -6,7 +6,7 @@ pipeline {
             steps {
                 dir('property_api') {
                     script {
-                        sh 'mvn clean install'
+                        bat 'mvn clean install'
                     }
                 }
             }
@@ -16,8 +16,8 @@ pipeline {
             steps {
                 dir('property-site') {
                     script {
-                        sh 'npm install'
-                        sh 'npm run build'
+                        bat 'npm install'
+                        bat 'npm run build'
                     }
                 }
             }
