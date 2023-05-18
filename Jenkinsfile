@@ -13,8 +13,8 @@ pipeline {
         }
         
         stage('Build React frontend') {
-            enviroment{CI=false}
             steps {
+                enviroment{CI=false}
                 dir('property-site') {
                     script {
                         bat 'npm install'
