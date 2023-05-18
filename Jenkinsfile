@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/RJamesV-W/Property-App'
-            }
-        }
-
         stage('Build Spring backend') {
             steps {
                 dir('property_api') {
