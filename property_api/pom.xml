@@ -14,9 +14,9 @@
     <name>EstateAgency</name>
     <description>EstateAgency</description>
     <properties>         
-         <property>
-             <java.version>17</java.version>
-         </property>
+
+         <java.version>17</java.version>
+
     </properties>
     <dependencies>
         <dependency>
