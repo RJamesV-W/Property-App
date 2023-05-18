@@ -11,8 +11,9 @@ pipeline {
                 }
             }
         }
-
+        
         stage('Build React frontend') {
+            enviroment{CI=false}
             steps {
                 dir('property-site') {
                     script {
